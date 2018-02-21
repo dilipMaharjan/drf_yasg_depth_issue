@@ -13,18 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-from rest_framework import routers
-
-import todo.views as views
-
-router = routers.DefaultRouter()
-router.register(r'todos', views.TodoViewSet)
-router.register(r'todosanother', views.TodoAnotherViewSet)
-router.register(r'todosyetanother', views.TodoYetAnotherViewSet)
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -38,5 +30,5 @@ schema_view = get_schema_view(
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^docs/$', schema_view.with_ui('swagger', cache_timeout=None), name='schema-swagger-ui'),
+    url(r'^todo/', include('todo.urls')),
 ]
-urlpatterns += router.urls
