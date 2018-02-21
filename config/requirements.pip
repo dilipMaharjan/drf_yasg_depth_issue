@@ -1,0 +1,6 @@
+django==1.11
+djangorestframework
+channels
+drf_yasg
+gunicorn
+psycopg2

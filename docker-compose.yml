@@ -1,0 +1,27 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: ngx
+    ports:
+      - "80:80"
+    volumes:
+      - ./drf_yasg_depth_issue:/src
+      - ./config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
+  web:
+    build: .
+    container_name: web
+    command: bash -c " sleep 7 && python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn app.wsgi -b 0.0.0.0:8000 & daphne app.asgi:application --port 8001 -b 0.0.0.0"
+    depends_on:
+      - db
+    volumes:
+      - ./drf_yasg_depth_issue:/src
+    ports:
+      - "8001:8001"
+  db:
+    image: postgres:latest
+    container_name: pgres
+    ports:
+      - "5432:5432"
