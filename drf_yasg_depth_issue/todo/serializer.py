@@ -1,23 +1,69 @@
+from todo.models import A, P, C, Chu, T, Co
 from rest_framework import serializers
 
-from .models import Todo, TodoAnother
 
+class PSerializer(serializers.ModelSerializer):
+    """Serializer to map the Model instance into JSON format."""
 
-class TodoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Todo
-        fields = ('title',)
-
-
-class TodoAnotherSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Todo
-        fields = ('title',)
+        """Meta class to map serializer's fields with the model fields."""
+        model = P
         depth = 2
+        fields = '__all__'
 
 
-class TodoYetAnotherSerializer(serializers.ModelSerializer):
+class CSerializer(serializers.ModelSerializer):
+    """Serializer to map the Model instance into JSON format."""
+
     class Meta:
-        model = Todo
-        fields = ('title',)
+        """Meta class to map serializer's fields with the model fields."""
+        model = C
         depth = 2
+        fields = '__all__'
+
+
+class ChuSerializer(serializers.ModelSerializer):
+    """Serializer to map the Model instance into JSON format."""
+
+    class Meta:
+        """Meta class to map serializer's fields with the model fields."""
+        model = Chu
+        fields = '__all__'
+
+
+class TSerializer(serializers.ModelSerializer):
+    """Serializer to map the Model instance into JSON format."""
+
+    class Meta:
+        """Meta class to map serializer's fields with the model fields."""
+        model = T
+        fields = '__all__'
+
+
+class CoSerializer(serializers.ModelSerializer):
+    """Serializer to map the Model instance into JSON format."""
+
+    class Meta:
+        """Meta class to map serializer's fields with the model fields."""
+        model = Co
+        fields = '__all__'
+
+
+class ASerializer(serializers.ModelSerializer):
+    """Serializer to map the Model instance into JSON format."""
+
+    class Meta:
+        """Meta class to map serializer's fields with the model fields."""
+        model = A
+        fields = '__all__'
+
+
+class TfSerializer(serializers.ModelSerializer):
+    """Serializer to map the Model instance into JSON format."""
+
+    class Meta:
+        """Meta class to map serializer's fields with the model fields."""
+        model = T
+        fields = '__all__'
+        depth = 4
+
