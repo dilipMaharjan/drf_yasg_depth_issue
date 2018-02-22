@@ -8,7 +8,7 @@ class PSerializer(serializers.ModelSerializer):
     class Meta:
         """Meta class to map serializer's fields with the model fields."""
         model = P
-        depth = 1
+        depth = 2
         fields = '__all__'
 
 

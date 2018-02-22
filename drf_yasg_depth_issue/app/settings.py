@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'todo',
-    'channelsexample',
     'drf_yasg',
     'channels',
 ]
